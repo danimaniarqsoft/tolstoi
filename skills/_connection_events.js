@@ -10,7 +10,7 @@ module.exports = function(controller) {
       bot.startConversation(message, function(err, convo) {
 
         convo.say({
-          text: 'Hello human! I am brand new Botkit bot, ready to be customized to your needs!',
+          text: 'Buenos días! Mi nombre es Lev Tolstoi, qué te gustaría saber!',
           quick_replies: [
             {
               title: 'Help',
