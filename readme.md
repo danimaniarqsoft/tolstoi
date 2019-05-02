@@ -2,7 +2,7 @@
 
 Tolstoi chat bot 
 
-<img src="https://es.wikipedia.org/wiki/Le%C3%B3n_Tolst%C3%B3i#/media/File:Leo_Tolstoy_1897,_black_and_white,_37767u.jpg"
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Leo_Tolstoy_1897%2C_black_and_white%2C_37767u.jpg/800px-Leo_Tolstoy_1897%2C_black_and_white%2C_37767u.jpg"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
 
