@@ -1,8 +1,11 @@
-# Botkit Anywhere
+# Tolstoi
 
-Embed a bot in any web page or app with Botkit for the Web.
+Tolstoi chat bot 
 
-Botkit Anywhere is a self-contained chat server, API and web-based messaging client that has been built on top of the industry leading Botkit development stack.
+<img src="https://es.wikipedia.org/wiki/Le%C3%B3n_Tolst%C3%B3i#/media/File:Leo_Tolstoy_1897,_black_and_white,_37767u.jpg"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
 
 ## Get Started
 
