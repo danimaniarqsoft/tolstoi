@@ -51,11 +51,10 @@ $human_message_text: white;
     .powered_by {
       flex-shrink: 0;
       text-align: center;
-
       border-bottom: 0px solid #333;
       font-size: 25px;
       padding: 0.25rem;
-      background-color: #2A749B;
+      background: linear-gradient(to right, #16222a, #3a6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       color: #FFF;
 
       a {

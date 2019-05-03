@@ -165,7 +165,8 @@ a.button:hover {
   border-bottom: 0px solid #333;
   font-size: 25px;
   padding: 0.25rem;
-  background-color: #2A749B;
+  background: linear-gradient(to right, #16222a, #3a6073);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #FFF;
 }
 #message_window .powered_by a {
