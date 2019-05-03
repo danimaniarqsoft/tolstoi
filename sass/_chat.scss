@@ -20,7 +20,11 @@ $human_message_text: white;
     font-family: 'Arial', sans-serif;
 
     .disconnected {
-        background: #FFFFCC;
+        background-color: #ff9800;
+        color: white;
+        opacity: 0.83;
+        transition: opacity 0.6s;
+        margin-bottom: 0px;
         padding: 0.25rem;
     }
     &.connected .disconnected {
@@ -35,8 +39,10 @@ $human_message_text: white;
         display: none;
       }
       .offline {
-        background: #FF0000;
-        color: #FFF;
+        background-color: #f44336;
+        color: white;
+        opacity: 0.83;
+        transition: opacity 0.6s;
         padding: 0.25rem;
         display: block;
       }
@@ -84,6 +90,9 @@ $human_message_text: white;
           font-size: 0.9rem;
           outline: none;
           border: none;
+      }
+      input::placeholder{
+        font-style: italic;
       }
       button {
          background-color: #4CAF50;

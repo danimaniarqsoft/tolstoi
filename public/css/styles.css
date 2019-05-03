@@ -135,7 +135,11 @@ a.button:hover {
   font-family: "Arial", sans-serif;
 }
 #message_window .disconnected {
-  background: #FFFFCC;
+  background-color: #ff9800;
+  color: white;
+  opacity: 0.83;
+  transition: opacity 0.6s;
+  margin-bottom: 0px;
   padding: 0.25rem;
 }
 #message_window.connected .disconnected {
@@ -148,8 +152,10 @@ a.button:hover {
   display: none;
 }
 #message_window.offline .offline {
-  background: #FF0000;
-  color: #FFF;
+  background-color: #f44336;
+  color: white;
+  opacity: 0.83;
+  transition: opacity 0.6s;
   padding: 0.25rem;
   display: block;
 }
@@ -190,6 +196,9 @@ a.button:hover {
   font-size: 0.9rem;
   outline: none;
   border: none;
+}
+#message_window footer input::placeholder {
+  font-style: italic;
 }
 #message_window footer button {
   background-color: #4CAF50;
