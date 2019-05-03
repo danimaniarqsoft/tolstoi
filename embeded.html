@@ -1,0 +1,25 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+</head>
+
+<body>
+    <div id="embedded_messenger">
+                <header id="message_header" onclick="Botkit.toggle()">Chat</header>
+                <iframe  id="botkit_client" src="//localhost:3000/chat.html"></iframe>
+            </div>
+            <link rel="stylesheet" href="//localhost:3000/css/embed.css" />                
+            <script src="//localhost:3000/embed.js"></script>
+            <script>
+            var options = {}; // for options, see: https://github.com/howdyai/botkit-starter-web/blob/master/docs/botkit_web_client.md#botkitbootuser
+            Botkit.boot(options);
+            </script>
+</body>
+</html>

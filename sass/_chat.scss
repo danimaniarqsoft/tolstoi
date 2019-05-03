@@ -46,10 +46,11 @@ $human_message_text: white;
       flex-shrink: 0;
       text-align: center;
 
-      border-bottom: 4px solid #333;
+      border-bottom: 0px solid #333;
       font-size: 25px;
       padding: 0.25rem;
-      color: #666;
+      background-color: #2A749B;
+      color: #FFF;
 
       a {
         text-decoration: none;
@@ -67,6 +68,7 @@ $human_message_text: white;
       flex-direction: column-reverse;
       display: flex;
       overflow-y: auto;
+      background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(../chat-background.png);
 
      div div {
         margin: 0.25rem;
@@ -91,7 +93,7 @@ $human_message_text: white;
          font-weight: bold;
          border-radius: 50%;
          width: 10%;
-         height: 28px;
+         height: 34px;
      }
   }
 
@@ -174,6 +176,7 @@ $human_message_text: white;
           list-style-type: none;
           margin: 0px auto;
           padding: 0;
+          background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(../chat-background-simple.png);
           li {
               display: inline-block;
               margin: 0.5rem;
