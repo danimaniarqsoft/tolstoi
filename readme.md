@@ -100,3 +100,60 @@ You can find full documentation for Botkit on [our website](https://botkit.ai/do
 # About Botkit
 
 Botkit is a product of [Howdy](https://howdy.ai) and made in Austin, TX with the help of a worldwide community of botheads.
+
+# Instalar y configurar el CMS dentro de un proyecto BotKit:
+
+1. Instalar botkit
+
+```bash
+npm install -g botkit
+```
+
+2. Crear un proyecto botkit
+
+```bash
+botkit new --platform web
+```
+cd [BOT_NAME]
+
+3. Agregar dependencia de botkit-cms
+
+```bash
+npm install --save botkit-cms
+```
+
+4. Modificar el archivo `[BOT_NAME]/bot.js`
+
+Modiciar el archivo `bot.js` con el siguiente contenido
+
+```javascript
+    var controller = Botkit.socketbot(bot_options);
+    var cms = require('botkit-cms')();
+    cms.useLocalStudio(controller);
+    cms.loadScriptsFromFile(__dirname + '/scripts.json');
+```
+
+5. Copiar script.json
+
+Copiar el archivo `botkit-cms/.data/sample_scripts.json` dentro del archivo `[BOT_NAME]/script.js`
+
+6. Configurar stuido para leer Scripts
+
+Modificar el archivo `unhandled_message.js` con el siguiente contenido:
+
+```javascript
+module.exports = function(controller) {
+    controller.on('message_received', function(bot, message) {
+      controller.studio.runTrigger(bot, message.text, message.user, message.channel).catch(function(err) {
+          bot.reply(message, {text: 'Lo siento, No entiendo lo que me dices',
+          quick_replies: [
+            {
+              title: 'Help',
+              payload: 'help',
+            },
+          ]});
+      });
+    });
+}
+```
+
