@@ -42,7 +42,7 @@ if (process.env.MONGO_URI) {
 var controller = Botkit.socketbot(bot_options);
 var cms = require('botkit-cms')();
 cms.useLocalStudio(controller);
-cms.loadScriptsFromFile(__dirname + '/scripts.json').catch(function(err) {
+cms.loadScriptsFromFile(__dirname + '/skills-scripts/scripts.json').catch(function(err) {
   console.error('Error loading scripts', err);
 });
 

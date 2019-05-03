@@ -1,7 +1,7 @@
 [
   {
-    "id": "0-0-0-0-0",
-    "command": "hello",
+    "id": "hola-command",
+    "command": "hola",
     "description": "Respond when a human says hello!",
     "script": [
       {
@@ -9,19 +9,13 @@
         "script": [
           {
             "text": [
-              "Hello Human!",
-              "How do you do?",
-              "Nice to meet you Human.",
-              "Hi!",
-              "How’s it going?",
-              "Hey!",
-              "Hey there!",
-              "Howdy!",
-              "G`day human!",
-              "Salut!",
-              "Ciao!",
               "Hola!",
-              "Shalom!"
+              "Cómo estás?",
+              "Me da gusto conocerte.",
+              "Hey!",
+              "¿Cómo estás?",
+              "¡Qué haces!",
+              "Saludos!"
             ]
           },
           {
@@ -32,13 +26,13 @@
     ],
     "triggers": [
       {
-        "pattern": "hell.*",
+        "pattern": "hol.*",
         "type": "regexp",
         "id": "495"
       },
       {
         "type": "string",
-        "pattern": "hello"
+        "pattern": "hola"
       },
       {
         "type": "string",
@@ -46,11 +40,11 @@
       },
       {
         "type": "string",
-        "pattern": "hi"
+        "pattern": "que tal!"
       },
       {
         "type": "string",
-        "pattern": "howdy"
+        "pattern": "buena tarde"
       }
     ],
     "variables": [],
