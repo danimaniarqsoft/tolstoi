@@ -13,8 +13,8 @@ module.exports = function(controller) {
           text: 'Buenos días! Mi nombre es Lev Tolstoi, qué te gustaría saber!',
           quick_replies: [
             {
-              title: 'Help',
-              payload: 'help',
+              title: 'Ayuda',
+              payload: 'ayuda',
             },
           ]
         });
@@ -24,13 +24,13 @@ module.exports = function(controller) {
 
     }
 
-    controller.hears(['help','contact','documentation','docs','community'], 'message_received', function(bot, message) {
+    controller.hears(['ayuda','contact','documentation','docs','community'], 'message_received', function(bot, message) {
 
       bot.startConversation(message, function(err, convo) {
 
         // set up a menu thread which other threads can point at.
         convo.ask({
-          text: 'I can point you to resources, and connect you with experts who can help.',
+          text: 'Puedo señalarle algunos recursos útiles y conectarlo con expertos que pueden ayudarlo.',
           quick_replies: [
             {
               title: 'Read the Docs',
