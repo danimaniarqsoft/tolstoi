@@ -17,7 +17,7 @@ $human_message_text: white;
     /*margin: 2rem auto;*/
     display: flex;
     flex-direction: column;
-    font-family: 'helvetica', sans-serif;
+    font-family: 'Arial', sans-serif;
 
     .disconnected {
         background: #FFFFCC;
@@ -79,17 +79,19 @@ $human_message_text: white;
       padding: 0.25rem;
       input[type="text"] {
           flex-grow: 1;
-          font-size: 1.25rem;
+          font-size: 0.9rem;
           outline: none;
           border: none;
       }
       button {
-         width: 50px;
-         background: none;
+         background-color: #4CAF50;
          border: 0;
          cursor: pointer;
-         color: blue;
+         color: white;
          font-weight: bold;
+         border-radius: 50%;
+         width: 10%;
+         height: 28px;
      }
   }
 

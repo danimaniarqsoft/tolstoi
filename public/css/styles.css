@@ -1,4 +1,5 @@
 /* shared botkit ui styles */
+/*a795ef - purple*/
 * {
   box-sizing: border-box;
 }
@@ -53,7 +54,7 @@ footer {
 }
 
 a {
-  color: #a795ef;
+  color: #4CAF50;
 }
 
 .copyurl {
@@ -92,7 +93,7 @@ div.input label {
 }
 .addon button:hover {
   background: #FFF;
-  color: #a795ef;
+  color: #4CAF50;
 }
 
 div.hr {
@@ -103,7 +104,7 @@ div.hr {
 }
 
 a.button {
-  border: 2px solid #a795ef;
+  border: 2px solid #4CAF50;
   font-weight: bold;
   margin: 0;
   border-radius: 3px;
@@ -131,7 +132,7 @@ a.button:hover {
   /*margin: 2rem auto;*/
   display: flex;
   flex-direction: column;
-  font-family: "helvetica", sans-serif;
+  font-family: "Arial", sans-serif;
 }
 #message_window .disconnected {
   background: #FFFFCC;
@@ -189,14 +190,14 @@ a.button:hover {
   border: none;
 }
 #message_window footer button {
-  background-color: #4CAF50; /* Green */
-  width: 35px;
-  height: 35px;
+  background-color: #4CAF50;
   border: 0;
   cursor: pointer;
   color: white;
   font-weight: bold;
   border-radius: 50%;
+  width: 10%;
+  height: 28px;
 }
 #message_window form {
   display: flex;
@@ -249,7 +250,7 @@ a.button:hover {
 }
 #message_window .message.outgoing {
   float: right;
-  background: #a795ef;
+  background: #4CAF50;
   color: white;
 }
 #message_window #message_replies {
@@ -272,15 +273,15 @@ a.button:hover {
 #message_window #message_replies a {
   text-decoration: none;
   display: block;
-  border: 1px solid #a795ef;
-  color: #a795ef;
+  border: 1px solid #4CAF50;
+  color: #4CAF50;
   border-radius: 16px;
   padding: 0.25rem 1rem;
   font-size: 14px;
   cursor: pointer;
 }
 #message_window #message_replies a:hover {
-  background: #a795ef;
+  background: #4CAF50;
   color: #FFF;
 }
 
