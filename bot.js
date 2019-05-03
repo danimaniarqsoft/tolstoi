@@ -24,6 +24,8 @@ var debug = require('debug')('botkit:main');
 
 var bot_options = {
     replyWithTyping: true,
+    studio_command_uri: process.env.studio_command_uri,
+    studio_token: process.env.studio_token,
 };
 
 // Use a mongo database if specified, otherwise store in a JSON file local to the app.
