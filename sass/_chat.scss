@@ -1,6 +1,6 @@
 $action_color: orange;
 $background: #FFFFFF;
-$bot_message_background: #F0F0F0;
+$bot_message_background: #c0ded9;
 $bot_message_text: #333;
 $human_message_background: $botkit_purple;
 $human_message_text: white;
@@ -68,7 +68,7 @@ $human_message_text: white;
       flex-direction: column-reverse;
       display: flex;
       overflow-y: auto;
-      background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(../chat-background.png);
+      background-image: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(../chat-background.png);
 
      div div {
         margin: 0.25rem;
@@ -112,7 +112,7 @@ $human_message_text: white;
       padding: 0.5rem;
       background: $bot_message_background;
       color: $bot_message_text;
-      border-radius: 5px;
+      border-radius: 15px;
       width: auto;
       display: inline-block;
       max-width: 75%;
@@ -176,7 +176,7 @@ $human_message_text: white;
           list-style-type: none;
           margin: 0px auto;
           padding: 0;
-          background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(../chat-background-simple.png);
+          background-image: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(../chat-background-simple.png);
           li {
               display: inline-block;
               margin: 0.5rem;
