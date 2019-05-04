@@ -4,6 +4,8 @@ $bot_message_background: #c0ded9;
 $bot_message_text: #333;
 $human_message_background: $botkit_purple;
 $human_message_text: white;
+$chat_background_image_url: '../chat-background.jpg';
+$powered_by_background: linear-gradient(to right, #3a6073, #3a6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 #message_window {
     background: $background;
@@ -54,7 +56,7 @@ $human_message_text: white;
       border-bottom: 0px solid #333;
       font-size: 25px;
       padding: 0.25rem;
-      background: linear-gradient(to right, #16222a, #3a6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: $powered_by_background;
       color: #FFF;
 
       a {
@@ -73,7 +75,7 @@ $human_message_text: white;
       flex-direction: column-reverse;
       display: flex;
       overflow-y: auto;
-      background-image: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(../chat-background.png);
+      background-image: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url($chat_background_image_url);
 
      div div {
         margin: 0.25rem;
@@ -184,7 +186,7 @@ $human_message_text: white;
           list-style-type: none;
           margin: 0px auto;
           padding: 0;
-          background-image: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(../chat-background-simple.png);
+          background-image: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url($chat_background_image_url);
           li {
               display: inline-block;
               margin: 0.5rem;
