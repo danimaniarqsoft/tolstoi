@@ -1,6 +1,6 @@
 $action_color: orange;
 $background: #FFFFFF;
-$bot_message_background: #F0F0F0;
+$bot_message_background: #c0ded9;
 $bot_message_text: #333;
 $human_message_background: $botkit_purple;
 $human_message_text: white;
@@ -20,7 +20,11 @@ $human_message_text: white;
     font-family: 'Arial', sans-serif;
 
     .disconnected {
-        background: #FFFFCC;
+        background-color: #ff9800;
+        color: white;
+        opacity: 0.83;
+        transition: opacity 0.6s;
+        margin-bottom: 0px;
         padding: 0.25rem;
     }
     &.connected .disconnected {
@@ -35,8 +39,10 @@ $human_message_text: white;
         display: none;
       }
       .offline {
-        background: #FF0000;
-        color: #FFF;
+        background-color: #f44336;
+        color: white;
+        opacity: 0.83;
+        transition: opacity 0.6s;
         padding: 0.25rem;
         display: block;
       }
@@ -45,11 +51,10 @@ $human_message_text: white;
     .powered_by {
       flex-shrink: 0;
       text-align: center;
-
       border-bottom: 0px solid #333;
       font-size: 25px;
       padding: 0.25rem;
-      background-color: #2A749B;
+      background: linear-gradient(to right, #16222a, #3a6073); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       color: #FFF;
 
       a {
@@ -68,7 +73,7 @@ $human_message_text: white;
       flex-direction: column-reverse;
       display: flex;
       overflow-y: auto;
-      background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(../chat-background.png);
+      background-image: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(../chat-background.png);
 
      div div {
         margin: 0.25rem;
@@ -84,6 +89,9 @@ $human_message_text: white;
           font-size: 0.9rem;
           outline: none;
           border: none;
+      }
+      input::placeholder{
+        font-style: italic;
       }
       button {
          background-color: #4CAF50;
@@ -112,7 +120,7 @@ $human_message_text: white;
       padding: 0.5rem;
       background: $bot_message_background;
       color: $bot_message_text;
-      border-radius: 5px;
+      border-radius: 15px;
       width: auto;
       display: inline-block;
       max-width: 75%;
@@ -176,7 +184,7 @@ $human_message_text: white;
           list-style-type: none;
           margin: 0px auto;
           padding: 0;
-          background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(../chat-background-simple.png);
+          background-image: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(../chat-background-simple.png);
           li {
               display: inline-block;
               margin: 0.5rem;

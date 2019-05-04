@@ -1,0 +1,53 @@
+[
+  {
+    "id": "hola-command",
+    "command": "hola",
+    "description": "Respond when a human says hello!",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Hola!",
+              "Cómo estás?",
+              "Me da gusto conocerte.",
+              "Hey!",
+              "¿Cómo estás?",
+              "¡Qué haces!",
+              "Saludos!"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": "hol.*",
+        "type": "regexp",
+        "id": "495"
+      },
+      {
+        "type": "string",
+        "pattern": "hola"
+      },
+      {
+        "type": "string",
+        "pattern": "hey"
+      },
+      {
+        "type": "string",
+        "pattern": "que tal!"
+      },
+      {
+        "type": "string",
+        "pattern": "buena tarde"
+      }
+    ],
+    "variables": [],
+    "modified": "2018-12-12T15:23:41.416Z"
+  }
+]

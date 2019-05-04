@@ -24,6 +24,8 @@ var debug = require('debug')('botkit:main');
 
 var bot_options = {
     replyWithTyping: true,
+    studio_command_uri: process.env.studio_command_uri,
+    studio_token: process.env.studio_token,
 };
 
 // Use a mongo database if specified, otherwise store in a JSON file local to the app.
@@ -38,6 +40,11 @@ if (process.env.MONGO_URI) {
 
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.socketbot(bot_options);
+var cms = require('botkit-cms')();
+cms.useLocalStudio(controller);
+cms.loadScriptsFromFile(__dirname + '/skills-scripts/scripts.json').catch(function(err) {
+  console.error('Error loading scripts', err);
+});
 
 // Set up an Express-powered webserver to expose oauth and webhook endpoints
 var webserver = require(__dirname + '/components/express_webserver.js')(controller);

@@ -9,7 +9,9 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "botkit": "^0.7.0",
+    "botkit-cms": "0.0.4",
     "botkit-storage-mongo": "^1.0.6",
+    "bson": "1.0.5",
     "debug": "^3.1.0",
     "express": "^4.16.4",
     "express-hbs": "^1.0.4",
@@ -32,6 +34,6 @@
     "chatbots",
     "web chat"
   ],
-  "author": "ben@howdy.ai",
+  "author": "Daniel Cortes Pichardo",
   "license": "MIT"
 }
