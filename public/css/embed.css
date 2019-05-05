@@ -3,8 +3,8 @@
   z-index: 1000;
   bottom: -400px;
   right: 2rem;
-  height: 434px;
-  transition: 0.5s ease-in-out bottom; }
+  height: 444px;
+  transition: 1.0s ease-in-out bottom; }
   #embedded_messenger.active {
     bottom: 0; }
   #embedded_messenger iframe {

@@ -10,6 +10,15 @@ webserver.get('/site', function(req,res) {
 
 });
 
+// This create the /site route, where an easy-to-copy embed code is available
+webserver.get('/test', function(req,res) {
+  res.render('test', {
+    layout: 'layouts/default',
+    base_url: req.headers.host
+  });
+
+});
+
 // This creates the /embed route, where an easy-to-copy embed code is available
 webserver.get('/embed', function(req,res) {
 
