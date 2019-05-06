@@ -52,9 +52,9 @@ $powered_by_background: linear-gradient(to right, #3a6073, #3a6073); /* W3C, IE 
 
     .powered_by {
       flex-shrink: 0;
-      text-align: center;
+      text-align: left;
       border-bottom: 0px solid #333;
-      font-size: 25px;
+      font-size: 18px;
       padding: 0.25rem;
       background: $powered_by_background;
       color: #FFF;
