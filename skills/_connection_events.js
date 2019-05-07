@@ -9,61 +9,69 @@ module.exports = function(controller) {
 
       bot.startConversation(message, function(err, convo) {
 
+        convo.say(' Hola! ¿Cómo estás?');
+
         convo.say({
-          text: 'Buenos días! Mi nombre es Lev Tolstoi, qué te gustaría saber!',
+          text: '¿Puedo ayudarte a localizar algún artículo o herramienta de nuestro amplio catálogo?',
           quick_replies: [
             {
-              title: 'Ayuda',
-              payload: 'ayuda',
+              title: 'Sí',
+              payload: 'catalogo',
             },
+            {
+              title: 'No',
+              payload: 'no',
+            }
           ]
         });
-
-
       });
 
     }
 
-    controller.hears(['ayuda','contact','documentation','docs','community'], 'message_received', function(bot, message) {
+    controller.hears('no','message_received', function(bot, message) {
+      bot.reply(message,'Es una pena, pero en caso de que cambie de opinión, por favor contáctenos a través del siguiente formulario : \n\n[Utilice ésta forma para dejar su consulta](https://casacraviotoeshop.com/contacto/)');
+    });
+
+    controller.hears(['catalogo', 'catálogo', 'si', 'SI', 'sí', 'SÍ'], 'message_received', function(bot, message) {
 
       bot.startConversation(message, function(err, convo) {
 
         // set up a menu thread which other threads can point at.
         convo.ask({
-          text: 'Puedo señalarle algunos recursos útiles y conectarlo con expertos que pueden ayudarlo.',
+          text: 'Puedo mostrarle dos de nuestras principales categorías o conectarlo con un agente de ventas que pueda ayudarlo.',
           quick_replies: [
             {
-              title: 'Read the Docs',
-              payload: 'documentation',
+              title: 'Plomería',
+              payload: 'plomeria',
             },
             {
-              title: 'Join the Community',
-              payload: 'community',
+              title: 'Eléctricos',
+              payload: 'electricos',
             },
             {
-              title: 'Expert Help',
-              payload: 'contact us',
+              title: 'Contactar Agente',
+              payload: 'contacto',
             },
           ]
         },[
           {
-            pattern: 'documentation',
+            pattern: 'plomeria',
             callback: function(res, convo) {
-              convo.gotoThread('docs');
+              convo.gotoThread('plomeria');
               convo.next();
             }
           },
           {
-            pattern: 'community',
+            pattern: 'electricos',
             callback: function(res, convo) {
-              convo.gotoThread('community');
+              convo.gotoThread('electricos');
               convo.next();
             }
           },
           {
-            pattern: 'contact',
+            pattern: 'contacto',
             callback: function(res, convo) {
-              convo.gotoThread('contact');
+              convo.gotoThread('contacto');
               convo.next();
             }
           },
@@ -77,45 +85,43 @@ module.exports = function(controller) {
 
         // set up docs threads
         convo.addMessage({
-          text: 'I do not know how to help with that. Say `help` at any time to access this menu.'
+          text: 'No se cómo ayudarle con eso, pero en el siguiente sitio puede encontrar más información de lo que ofrecemos \n\n[Casa Cravioto](https://casacraviotoeshop.com/)\n\n'
         },'end');
                 
         // set up docs threads
         convo.addMessage({
-          text: 'Botkit is extensively documented! Here are some useful links:\n\n[Botkit Studio Help Desk](https://botkit.groovehq.com/help_center)\n\n[Botkit Anywhere README](https://github.com/howdyai/botkit-starter-web/blob/master/readme.md#botkit-anywhere)\n\n[Botkit Developer Guide](https://github.com/howdyai/botkit/blob/master/readme.md#build-your-bot)',
-        },'docs');
+          text: 'Tenemos lo que necesitas para plomería, mira el siguiente links:\n\n[Plomería](https://casacraviotoeshop.com/plomeria.html)\n\n',
+        },'plomeria');
 
         convo.addMessage({
           action: 'default'
-        }, 'docs');
+        }, 'plomeria');
 
 
         // set up community thread
         convo.addMessage({
-          text: 'Our developer community has thousands of members, and there are always friendly people available to answer questions about building bots!',
-        },'community');
+          text: 'Casa Cravioto empresa 100% mexicana inicia operaciones en 1986 dedicada al suministro de productos ferreteros creando el concepto “Siempre Al Mejor Precio”.Actualmente contamos con presencia comercial a nivel nacional atendiendo el mercado a través de mostradores, tiendas de autoservicio, telemarketing, tienda en línea y vendedores presenciales',
+        },'electricos');
 
         convo.addMessage({
-          text: '[Join our community Slack channel](https://community.botkit.ai) to chat live with the Botkit team, representatives from major messaging platforms, and other developers just like you!',
-        },'community');
+          text: 'Somos una empresa ferretera que ofrece a sus clientes una amplia variedad de productos, con suministro oportuno y a un precio competitivo, cimentada en procesos eficaces con un enfoque de mejora continua y sostenibilidad.',
+        },'electricos');
 
         convo.addMessage({
-          text: '[Checkout the Github Issue Queue](https://github.com/howdyai/botkit/issues) to find frequently asked questions, bug reports and more.',
-        },'community');
+          text: 'Mira nuestra categoría de eléctricos en [Cravioto Electrico](https://casacraviotoeshop.com/electrico.html)',
+        },'electricos');
 
         convo.addMessage({
           action: 'default'
-        }, 'community');
-
-
+        }, 'electricos');
 
         // set up contact thread
         convo.addMessage({
-          text: 'The team who built me can help you build the perfect robotic assistant! They can answer all of your questions, and work with you to develop custom applications and integrations.\n\n[Use this form to get in touch](https://botkit.ai/contact.html), or email us directly at [help@botkit.ai](mailto:help@botkit.ai), and a real human will get in touch!',
-        },'contact');
+          text: 'Por favor, déjanos tu correo y el producto que deseas. Para tal fin, \n\n[utilice ésta forma para dejar su consulta](https://casacraviotoeshop.com/contacto/) y en breve lo contactaremos, gracias por su respuesta.',
+        },'contacto');
         convo.addMessage({
           action: 'default'
-        }, 'contact');
+        }, 'contacto');
 
       });
 

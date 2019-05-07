@@ -1,53 +1,235 @@
 [
   {
-    "id": "hola-command",
-    "command": "hola",
-    "description": "Respond when a human says hello!",
-    "script": [
-      {
-        "topic": "default",
-        "script": [
+      "id": "profile-id",
+      "command": "create_profile",
+      "description": "allow user to set up a user profile",
+      "script": [
           {
-            "text": [
-              "Hola!",
-              "Cómo estás?",
-              "Me da gusto conocerte.",
-              "Hey!",
-              "¿Cómo estás?",
-              "¡Qué haces!",
-              "Saludos!"
-            ]
+              "topic": "default",
+              "script": [
+                  {
+                      "text": [
+                          "Would you like to set up your profile now?"
+                      ],
+                      "collect": {
+                          "key": "setup_profile",
+                          "options": [
+                              {
+                                  "default": true,
+                                  "pattern": "default",
+                                  "action": "next"
+                              },
+                              {
+                                  "pattern": "yes",
+                                  "type": "utterance",
+                                  "action": "questions"
+                              },
+                              {
+                                  "pattern": "no",
+                                  "type": "utterance",
+                                  "action": "quit"
+                              },
+                              {
+                                  "pattern": "quit",
+                                  "type": "utterance",
+                                  "action": "quit"
+                              }
+                          ]
+                      }
+                  },
+                  {
+                      "action": "quit"
+                  }
+              ]
           },
           {
-            "action": "complete"
+              "topic": "on_timeout",
+              "script": [
+                  {
+                      "text": [
+                          "Let's do this later. Say `my profile` to resume."
+                      ]
+                  },
+                  {
+                      "action": "timeout"
+                  }
+              ]
+          },
+          {
+              "topic": "questions",
+              "script": [
+                  {
+                      "text": [
+                          "What is your email address?"
+                      ],
+                      "collect": {
+                          "key": "email",
+                          "options": [
+                              {
+                                  "default": true,
+                                  "pattern": "default",
+                                  "action": "repeat"
+                              },
+                              {
+                                  "pattern": "([a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]+)",
+                                  "type": "regex",
+                                  "action": "next"
+                              }
+                          ]
+                      }
+                  },
+                  {
+                      "text": [
+                          "What is your teeshirt size?"
+                      ],
+                      "collect": {
+                          "key": "teeshirt",
+                          "options": [
+                              {
+                                  "default": true,
+                                  "pattern": "default",
+                                  "action": "repeat"
+                              },
+                              {
+                                  "pattern": "(large|medium|small)",
+                                  "type": "regex",
+                                  "action": "next"
+                              }
+                          ],
+                          "multiple": false
+                      },
+                      "attachments": [
+                          {
+                              "title": "dsds",
+                              "text": "dsds",
+                              "fields": [],
+                              "actions": [
+                                  {
+                                      "text": "Small",
+                                      "name": "say",
+                                      "value": "small",
+                                      "type": "button"
+                                  },
+                                  {
+                                      "text": "Medium",
+                                      "name": "say",
+                                      "value": "medium",
+                                      "type": "button"
+                                  },
+                                  {
+                                      "text": "Large",
+                                      "name": "say",
+                                      "value": "large",
+                                      "type": "button"
+                                  },
+                                  {
+                                      "text": "XL",
+                                      "name": "say",
+                                      "value": "extra large",
+                                      "type": "button"
+                                  }
+                              ],
+                              "callback_id": "abcd"
+                          }
+                      ]
+                  },
+                  {
+                      "text": [
+                          "What is your favorite color?"
+                      ],
+                      "collect": {
+                          "key": "color",
+                          "options": [
+                              {
+                                  "default": true,
+                                  "pattern": "default",
+                                  "action": "next"
+                              }
+                          ]
+                      }
+                  },
+                  {
+                      "text": [
+                          "Cool! {{responses.color}} is my favorite color too."
+                      ]
+                  },
+                  {
+                      "action": "completed"
+                  }
+              ]
+          },
+          {
+              "topic": "quit",
+              "script": [
+                  {
+                      "text": [
+                          "OK! If you want to set up your profile later, just say `my profile`"
+                      ]
+                  },
+                  {
+                      "action": "stop"
+                  }
+              ]
+          },
+          {
+              "topic": "completed",
+              "script": [
+                  {
+                      "text": [
+                          "OK! Your profile is now up to date. Thanks!"
+                      ]
+                  },
+                  {
+                      "action": "complete"
+                  }
+              ]
           }
-        ]
-      }
-    ],
-    "triggers": [
-      {
-        "pattern": "hol.*",
-        "type": "regexp",
-        "id": "495"
-      },
-      {
-        "type": "string",
-        "pattern": "hola"
-      },
-      {
-        "type": "string",
-        "pattern": "hey"
-      },
-      {
-        "type": "string",
-        "pattern": "que tal!"
-      },
-      {
-        "type": "string",
-        "pattern": "buena tarde"
-      }
-    ],
-    "variables": [],
-    "modified": "2018-12-12T15:23:41.416Z"
+      ],
+      "triggers": [
+          {
+              "pattern": "my account",
+              "type": "string",
+              "id": 381
+          },
+          {
+              "pattern": "my profile",
+              "type": "string",
+              "id": 194
+          }
+      ],
+      "variables": [
+          {
+              "name": "color",
+              "type": "string",
+              "id": 153
+          },
+          {
+              "name": "teeshirt",
+              "type": "string",
+              "id": 498
+          },
+          {
+              "name": "email",
+              "type": "string",
+              "id": 336
+          },
+          {
+              "name": "setup_profile",
+              "type": "string",
+              "id": 64
+          },
+          {
+              "name": "question_1",
+              "type": "string"
+          },
+          {
+              "name": "question_2",
+              "type": "string"
+          },
+          {
+              "name": "question_3",
+              "type": "string"
+          }
+      ]
   }
 ]
