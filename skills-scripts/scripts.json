@@ -1,869 +1,1048 @@
 [
-    {
-      "id":"id-ferretera-script",
-      "command": "hola",
-      "description": "Script de Bienvenida",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Hola! ¿Cómo estás?"
-              ]
-            },
-            {
-              "text": [
-                "¿Te puedo ayudar a localizar alguno de nuestros productos?"
-              ],
-              "collect": null
-            },
-            {
-              "action": "complete"
-            },
-            {
-              "text": [
-                "Tenemos un catálogo con una gran variedad de productos"
-              ],
-              "quick_replies": [
+  {
+    "id":"ferretera-script-id",
+    "command": "hola",
+    "description": "Script de Bienvenida",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Hola! ¿Cómo estás?"
+            ]
+          },
+          {
+            "text": [
+              "¿Te puedo ayudar a localizar alguno de nuestros productos?"
+            ],
+            "collect": null
+          },
+          {
+            "action": "complete"
+          },
+          {
+            "text": [
+              "Tenemos un catálogo con una gran variedad de productos"
+            ],
+            "quick_replies": [
+              {
+                "title": "Ver Catálogo",
+                "payload": "catalogo",
+                "content_type": "text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*hola.*",
+        "type": "regexp",
+        "id": 196
+      },
+      {
+        "pattern": ".*bueno?s? dias?.*",
+        "type": "regexp",
+        "id": 434
+      }
+    ],
+    "variables": [
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "contacto",
+    "description": "script para contactar a las personas",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Con mucho gusto,"
+            ]
+          },
+          {
+            "text": [
+              "para ponerte en contacto directo con nosotros, por favor, llena la siguiente forma web:"
+            ]
+          },
+          {
+            "text": [
+              "[Casa Cravioto](https://casacraviotoeshop.com/contacto/)"
+            ]
+          },
+          {
+            "text": [
+              "o si lo prefieres, puedo enviarte información a tu correo electrónico."
+            ]
+          },
+          {
+            "text": [
+              "¿Te gustaría que te enviara información por e-mail?"
+            ],
+            "collect": {
+              "key": "capturar_email",
+              "options": [
                 {
-                  "title": "Ver Catálogo",
-                  "payload": "catalogo",
-                  "content_type": "text"
+                  "default": true,
+                  "pattern": "default",
+                  "action": "next"
+                },
+                {
+                  "pattern": ".*s[ií].*",
+                  "type": "regex",
+                  "action": "captura_email"
                 }
               ]
             }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Looks like you got distracted. We can continue later."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "pattern": ".*[Bb][Uu][Ee][Nn][Oo]?[Ss]? [Dd][Ii][Aa][Ss]?.*",
-          "type": "regexp",
-          "id": 211
-        },
-        {
-          "pattern": ".*[hH][oO][lL][Aa].*",
-          "type": "regexp",
-          "id": 479
-        }
-      ],
-      "variables": [
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "command": "contacto",
-      "description": "script para contactar a las personas",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Con mucho gusto,"
-              ]
-            },
-            {
-              "text": [
-                "para ponerte en contacto directo con nosotros, por favor, llena la siguiente forma web:"
-              ]
-            },
-            {
-              "text": [
-                "[Casa Cravioto](https://casacraviotoeshop.com/contacto/)"
-              ]
-            },
-            {
-              "text": [
-                "o si lo prefieres, puedo enviarte información a tu correo electrónico."
-              ]
-            },
-            {
-              "text": [
-                "¿Te gustaría que te enviara información por e-mail?"
-              ],
-              "collect": {
-                "key": "capturar_email",
-                "options": [
-                  {
-                    "default": true,
-                    "pattern": "default",
-                    "action": "next"
-                  },
-                  {
-                    "pattern": ".*[sS][iIíÍ].*",
-                    "type": "regex",
-                    "action": "captura_email"
-                  }
-                ]
-              }
-            },
-            {
-              "text": [
-                "Entiendo, te agradezco por consultarnos. Cualquier duda que tengas, estaré aquí para apoyarte."
-              ]
-            },
-            {
-              "action": "complete"
-            }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Looks like you got distracted. We can continue later."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        },
-        {
-          "topic": "captura_email",
-          "script": [
-            {
-              "text": [
-                "¿Me podrías proporcionar un correo electrónico por favor?"
-              ],
-              "collect": {
-                "key": "user_email",
-                "options": [
-                  {
-                    "default": true,
-                    "pattern": "default",
-                    "action": "invalid_email"
-                  },
-                  {
-                    "pattern": "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])",
-                    "type": "regex",
-                    "action": "next"
-                  }
-                ]
-              }
-            },
-            {
-              "text": [
-                "Muchas gracias!, en breve, uno de nuestros agentes te enviará información de nuestros productos"
-              ]
-            },
-            {
-              "action": "complete"
-            }
-          ]
-        },
-        {
-          "topic": "invalid_email",
-          "script": [
-            {
-              "text": [
-                "El email que me compartes no es válido"
-              ]
-            },
-            {
-              "action": "captura_email"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "pattern": ".*[cC][oO][nN][tT][aA][cC][tT][oO]:*",
-          "type": "regexp",
-          "id": 177
-        },
-        {
-          "type": "string",
-          "pattern": "contacto"
-        }
-      ],
-      "variables": [
-        {
-          "name": "capturar_email",
-          "type": "string",
-          "id": 124
-        },
-        {
-          "name": "user_email",
-          "type": "string",
-          "id": 364
-        },
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "command": "gracias",
-      "description": "script para responder a los agradecimientos",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Es un placer para mi servirle."
-              ]
-            },
-            {
-              "action": "complete"
-            }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Looks like you got distracted. We can continue later."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "pattern": ".*[gG][rR][aR][cC][iA][sS].*",
-          "type": "regexp",
-          "id": 230
-        },
-        {
-          "type": "string",
-          "pattern": "gracias"
-        }
-      ],
-      "variables": [
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "command": "catalogo",
-      "description": "catalogo de productos",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Con mucho gusto te muestro nuestro catálogo"
-              ]
-            },
-            {
-              "text": [
-                "Por favor, indícame en que sección te puedo ayudar"
-              ],
-              "quick_replies": [
+          },
+          {
+            "text": [
+              "Entiendo, posiblemente en otra ocasión. Te agradezco por consultarnos. Cualquier duda que tengas, estaré aquí para apoyarte."
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      },
+      {
+        "topic": "captura_email",
+        "script": [
+          {
+            "text": [
+              "¿Me podrías proporcionar un correo electrónico por favor?"
+            ],
+            "collect": {
+              "key": "user_email",
+              "options": [
                 {
-                  "title": "Ferreteria",
-                  "payload": "ferreteria",
-                  "content_type": "text"
+                  "default": true,
+                  "pattern": "default",
+                  "action": "invalid_email"
                 },
                 {
-                  "title": "Herramientas",
-                  "payload": "herramientas",
-                  "content_type": "text"
-                },
-                {
-                  "title": "Eléctrico",
-                  "payload": "electrico",
-                  "content_type": "text"
-                },
-                {
-                  "title": "Plomería",
-                  "payload": "plomeria",
-                  "content_type": "text"
-                },
-                {
-                  "title": "Jardinería",
-                  "payload": "jardineria",
-                  "content_type": "text"
-                },
-                {
-                  "title": "Cocina",
-                  "payload": "cocina",
-                  "content_type": "text"
-                },
-                {
-                  "title": "Electrónica",
-                  "payload": "electronica",
-                  "content_type": "text"
+                  "pattern": "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])",
+                  "type": "regex",
+                  "action": "next"
                 }
               ]
-            },
-            {
-              "action": "complete"
             }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Sí gustas, te puedes poner en contacto con alguno de nuestros agentes, quienes estarán gustosos de atenderte."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "pattern": "catalogo",
-          "type": "string",
-          "id": 232
-        },
-        {
-          "pattern": ".*[cC][aAáÁ][tT][aA][lL][oO][gG][oO].*",
-          "type": "regexp",
-          "id": 89
-        }
-      ],
-      "variables": [
-        {
-          "name": "consulta_catalogo",
-          "type": "string",
-          "id": 304
-        },
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "command": "ferreteria",
-      "description": "Catálogo de ferretería",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Tenemos varios productos de Ferretería que estoy seguro que te serán de mucha utilidad"
-              ]
-            },
-            {
-              "text": [
-                "Aquí puedes consultar nuestro catálogo"
-              ]
-            },
-            {
-              "text": [
-                "[Productos de Ferretería](https://casacraviotoeshop.com/ferreteria.html)"
-              ]
-            },
-            {
-              "action": "complete"
-            }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Looks like you got distracted. We can continue later."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "type": "string",
-          "pattern": "ferreteria"
-        }
-      ],
-      "variables": [
-        {
-          "name": "producto_seleccionado",
-          "type": "string",
-          "id": 111
-        },
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "command": "herramientas",
-      "description": "Catálogo de ferretería",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Tenemos varias Herramientas que estoy seguro que te serán de mucha utilidad"
-              ]
-            },
-            {
-              "text": [
-                "Aquí puedes consultar nuestro catálogo"
-              ]
-            },
-            {
-              "text": [
-                "[Herramientas](https://casacraviotoeshop.com/herramientas.html)"
-              ]
-            },
-            {
-              "action": "complete"
-            }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Looks like you got distracted. We can continue later."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "pattern": "herramientas",
-          "type": "string",
-          "id": 1
-        }
-      ],
-      "variables": [
-        {
-          "name": "producto_seleccionado",
-          "type": "string",
-          "id": 111
-        },
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "command": "electrico",
-      "description": "Catálogo de Electricidad",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Tenemos varios productos Eléctricos que estoy seguro que te serán de mucha utilidad"
-              ]
-            },
-            {
-              "text": [
-                "Aquí puedes consultar nuestro catálogo"
-              ]
-            },
-            {
-              "text": [
-                "[Productos Eléctricos](https://casacraviotoeshop.com/electrico.html)"
-              ]
-            },
-            {
-              "action": "complete"
-            }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Looks like you got distracted. We can continue later."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "pattern": "electrico",
-          "type": "string",
-          "id": 382
-        }
-      ],
-      "variables": [
-        {
-          "name": "producto_seleccionado",
-          "type": "string",
-          "id": 111
-        },
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "command": "plomeria",
-      "description": "Catálogo de Plomería",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Tenemos varios productos de Plomería que estoy seguro que te serán de mucha utilidad"
-              ]
-            },
-            {
-              "text": [
-                "Aquí puedes consultar nuestro catálogo"
-              ]
-            },
-            {
-              "text": [
-                "[Productos de Plomería](https://casacraviotoeshop.com/plomeria.html)"
-              ]
-            },
-            {
-              "action": "complete"
-            }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Looks like you got distracted. We can continue later."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "pattern": "plomeria",
-          "type": "string",
-          "id": 171
-        }
-      ],
-      "variables": [
-        {
-          "name": "producto_seleccionado",
-          "type": "string",
-          "id": 111
-        },
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "command": "jardineria",
-      "description": "Catálogo de jardineía",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Tenemos varios productos de Jardinería que estoy seguro que te serán de mucha utilidad"
-              ]
-            },
-            {
-              "text": [
-                "Aquí puedes consultar nuestro catálogo"
-              ]
-            },
-            {
-              "text": [
-                "[Productos de Jardinería](https://casacraviotoeshop.com/jardineria.html)"
-              ]
-            },
-            {
-              "action": "complete"
-            }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Looks like you got distracted. We can continue later."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "pattern": "jardineria",
-          "type": "string",
-          "id": 471
-        }
-      ],
-      "variables": [
-        {
-          "name": "producto_seleccionado",
-          "type": "string",
-          "id": 111
-        },
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "command": "cocina",
-      "description": "Catálogo de Cocina",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Tenemos varios productos de Cocina que estoy seguro que te serán de mucha utilidad"
-              ]
-            },
-            {
-              "text": [
-                "Aquí puedes consultar nuestro catálogo"
-              ]
-            },
-            {
-              "text": [
-                "[Productos de Cocina](https://casacraviotoeshop.com/cocina.html)"
-              ]
-            },
-            {
-              "action": "complete"
-            }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Looks like you got distracted. We can continue later."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "pattern": "cocina",
-          "type": "string",
-          "id": 14
-        }
-      ],
-      "variables": [
-        {
-          "name": "producto_seleccionado",
-          "type": "string",
-          "id": 111
-        },
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "command": "electronica",
-      "description": "Catálogo de Electrónica",
-      "script": [
-        {
-          "topic": "default",
-          "script": [
-            {
-              "text": [
-                "Tenemos varios productos de Electrónica que estoy seguro que te serán de mucha utilidad"
-              ]
-            },
-            {
-              "text": [
-                "Aquí puedes consultar nuestro catálogo"
-              ]
-            },
-            {
-              "text": [
-                "[Productos de Electrónica](https://casacraviotoeshop.com/electronica.html)"
-              ]
-            },
-            {
-              "action": "complete"
-            }
-          ]
-        },
-        {
-          "topic": "on_timeout",
-          "script": [
-            {
-              "text": [
-                "Looks like you got distracted. We can continue later."
-              ]
-            },
-            {
-              "action": "timeout"
-            }
-          ]
-        }
-      ],
-      "triggers": [
-        {
-          "pattern": "electronica",
-          "type": "string",
-          "id": 479
-        }
-      ],
-      "variables": [
-        {
-          "name": "producto_seleccionado",
-          "type": "string",
-          "id": 111
-        },
-        {
-          "name": "question_1",
-          "type": "string"
-        },
-        {
-          "name": "question_2",
-          "type": "string"
-        },
-        {
-          "name": "question_3",
-          "type": "string"
-        }
-      ]
-    }
-  ]
+          },
+          {
+            "text": [
+              "Muchas gracias!, en breve, uno de nuestros agentes te enviará información de nuestros productos"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "invalid_email",
+        "script": [
+          {
+            "text": [
+              "El email que me compartes no es válido"
+            ]
+          },
+          {
+            "action": "captura_email"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*contacto:*",
+        "type": "string",
+        "id": 151
+      },
+      {
+        "type": "string",
+        "pattern": "contacto"
+      }
+    ],
+    "variables": [
+      {
+        "name": "capturar_email",
+        "type": "string",
+        "id": 124
+      },
+      {
+        "name": "user_email",
+        "type": "string",
+        "id": 364
+      },
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "gracias",
+    "description": "script para responder a los agradecimientos",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Es un placer para mi servirle."
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*gracias.*",
+        "type": "regexp",
+        "id": 386
+      },
+      {
+        "type": "string",
+        "pattern": "gracias"
+      }
+    ],
+    "variables": [
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "catalogo",
+    "description": "catalogo de productos",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Con mucho gusto te muestro nuestro catálogo"
+            ]
+          },
+          {
+            "text": [
+              "Por favor, indícame en que sección te puedo ayudar"
+            ],
+            "quick_replies": [
+              {
+                "title": "Ferreteria",
+                "payload": "ferreteria",
+                "content_type": "text"
+              },
+              {
+                "title": "Herramientas",
+                "payload": "herramientas",
+                "content_type": "text"
+              },
+              {
+                "title": "Eléctrico",
+                "payload": "electrico",
+                "content_type": "text"
+              },
+              {
+                "title": "Plomería",
+                "payload": "plomeria",
+                "content_type": "text"
+              },
+              {
+                "title": "Jardinería",
+                "payload": "jardineria",
+                "content_type": "text"
+              },
+              {
+                "title": "Cocina",
+                "payload": "cocina",
+                "content_type": "text"
+              },
+              {
+                "title": "Electrónica",
+                "payload": "electronica",
+                "content_type": "text"
+              }
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Sí gustas, te puedes poner en contacto con alguno de nuestros agentes, quienes estarán gustosos de atenderte."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*cat[aáÁ]logo.*",
+        "type": "regexp",
+        "id": 12
+      },
+      {
+        "pattern": "catalogo",
+        "type": "string",
+        "id": 232
+      }
+    ],
+    "variables": [
+      {
+        "name": "consulta_catalogo",
+        "type": "string",
+        "id": 304
+      },
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "ferreteria",
+    "description": "Catálogo de ferretería",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Tenemos varios productos de Ferretería que estoy seguro que te serán de mucha utilidad"
+            ]
+          },
+          {
+            "text": [
+              "Aquí puedes consultar nuestro catálogo"
+            ]
+          },
+          {
+            "text": [
+              "[Productos de Ferretería](https://casacraviotoeshop.com/ferreteria.html)"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*ferreter[iíÍ]a.*",
+        "type": "regexp",
+        "id": 98
+      }
+    ],
+    "variables": [
+      {
+        "name": "producto_seleccionado",
+        "type": "string",
+        "id": 111
+      },
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "herramientas",
+    "description": "Catálogo de ferretería",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Tenemos varias Herramientas que estoy seguro que te serán de mucha utilidad"
+            ]
+          },
+          {
+            "text": [
+              "Aquí puedes consultar nuestro catálogo"
+            ]
+          },
+          {
+            "text": [
+              "[Herramientas](https://casacraviotoeshop.com/herramientas.html)"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*herramientas.*",
+        "type": "string",
+        "id": 287
+      }
+    ],
+    "variables": [
+      {
+        "name": "producto_seleccionado",
+        "type": "string",
+        "id": 111
+      },
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "electrico",
+    "description": "Catálogo de Electricidad",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Tenemos varios productos Eléctricos que estoy seguro que te serán de mucha utilidad"
+            ]
+          },
+          {
+            "text": [
+              "Aquí puedes consultar nuestro catálogo"
+            ]
+          },
+          {
+            "text": [
+              "[Productos Eléctricos](https://casacraviotoeshop.com/electrico.html)"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*el[eéÉ]ctrico.*",
+        "type": "regexp",
+        "id": 274
+      }
+    ],
+    "variables": [
+      {
+        "name": "producto_seleccionado",
+        "type": "string",
+        "id": 111
+      },
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "plomeria",
+    "description": "Catálogo de Plomería",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Tenemos varios productos de Plomería que estoy seguro que te serán de mucha utilidad"
+            ]
+          },
+          {
+            "text": [
+              "Aquí puedes consultar nuestro catálogo"
+            ]
+          },
+          {
+            "text": [
+              "[Productos de Plomería](https://casacraviotoeshop.com/plomeria.html)"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*plomer[iíÍ]a.*",
+        "type": "regexp",
+        "id": 308
+      }
+    ],
+    "variables": [
+      {
+        "name": "producto_seleccionado",
+        "type": "string",
+        "id": 111
+      },
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "jardineria",
+    "description": "Catálogo de jardineía",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Tenemos varios productos de Jardinería que estoy seguro que te serán de mucha utilidad"
+            ]
+          },
+          {
+            "text": [
+              "Aquí puedes consultar nuestro catálogo"
+            ]
+          },
+          {
+            "text": [
+              "[Productos de Jardinería](https://casacraviotoeshop.com/jardineria.html)"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*jardiner[iíÍ]a.*",
+        "type": "regexp",
+        "id": 41
+      }
+    ],
+    "variables": [
+      {
+        "name": "producto_seleccionado",
+        "type": "string",
+        "id": 111
+      },
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "cocina",
+    "description": "Catálogo de Cocina",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Tenemos varios productos de Cocina que estoy seguro que te serán de mucha utilidad"
+            ]
+          },
+          {
+            "text": [
+              "Aquí puedes consultar nuestro catálogo"
+            ]
+          },
+          {
+            "text": [
+              "[Productos de Cocina](https://casacraviotoeshop.com/cocina.html)"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*cocina.*",
+        "type": "regexp",
+        "id": 361
+      }
+    ],
+    "variables": [
+      {
+        "name": "producto_seleccionado",
+        "type": "string",
+        "id": 111
+      },
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "electronica",
+    "description": "Catálogo de Electrónica",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Tenemos varios productos de Electrónica que estoy seguro que te serán de mucha utilidad"
+            ]
+          },
+          {
+            "text": [
+              "Aquí puedes consultar nuestro catálogo"
+            ]
+          },
+          {
+            "text": [
+              "[Productos de Electrónica](https://casacraviotoeshop.com/electronica.html)"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*electr[oóÓ]nica.*",
+        "type": "regexp",
+        "id": 313
+      }
+    ],
+    "variables": [
+      {
+        "name": "producto_seleccionado",
+        "type": "string",
+        "id": 111
+      },
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "no",
+    "description": "script para respuestas de no",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Lo comprendo, si necesitas alguna información, sobre nuestros servicios, con mucho gusto estaré aquí para atenderte"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*no.*",
+        "type": "regexp",
+        "id": 323
+      }
+    ],
+    "variables": [
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "servicios",
+    "description": "servicios",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Los servicios que ofrecemos"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*servicios?.*",
+        "type": "regexp",
+        "id": 398
+      },
+      {
+        "type": "string",
+        "pattern": "servicios"
+      }
+    ],
+    "variables": [
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "sucursales",
+    "description": "sucursales",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Tenemos varias sucursales"
+            ]
+          },
+          {
+            "text": [
+              "que están divididas en: autoservicios, centros de distribución y nuestro corporativo"
+            ]
+          },
+          {
+            "text": [
+              "te dejo un vínculo para que puedas consultar nuestras sucursales [Sucursales](https://casacraviotoeshop.com/sucursales/)"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*ubicaci[oóÓ]n(es)?.*",
+        "type": "regexp",
+        "id": 177
+      },
+      {
+        "pattern": ".*sucursa(les)?.*",
+        "type": "regexp",
+        "id": 38
+      }
+    ],
+    "variables": [
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  }
+]
