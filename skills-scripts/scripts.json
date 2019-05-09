@@ -1,6 +1,6 @@
 [
   {
-    "id":"script-ferretera-id",
+    "id": "script-ferretera-id",
     "command": "hola",
     "description": "Script de Bienvenida",
     "script": [
@@ -929,7 +929,22 @@
         "script": [
           {
             "text": [
-              "Los servicios que ofrecemos"
+              "Somos una empresa mexicana, con una extensa variedad de productos de ferretería,"
+            ]
+          },
+          {
+            "text": [
+              "También contamos con muchos reconocimientos y certificaciones internacionales"
+            ]
+          },
+          {
+            "text": [
+              "Si gustas, puedes consultar nuestros reconocimientos en el siguiente vínculo"
+            ]
+          },
+          {
+            "text": [
+              "[Reconocimientos](https://casacraviotoeshop.com/reconocimientos/)"
             ]
           },
           {
