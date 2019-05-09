@@ -1,6 +1,6 @@
 [
   {
-    "id":"ferretera-script-id",
+    "id":"script-ferretera-id",
     "command": "hola",
     "description": "Script de Bienvenida",
     "script": [
@@ -1028,6 +1028,63 @@
         "pattern": ".*sucursa(les)?.*",
         "type": "regexp",
         "id": 38
+      }
+    ],
+    "variables": [
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "si",
+    "description": "script para respuestas si",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Con mucho gusto, déjame mostrar nuestro catálogo"
+            ]
+          },
+          {
+            "action": "execute_script",
+            "execute": {
+              "script": "catalogo",
+              "thread": "default"
+            }
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*s[iíÍ].*",
+        "type": "regexp",
+        "id": 98
       }
     ],
     "variables": [

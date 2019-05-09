@@ -16,21 +16,7 @@ module.exports = function (controller) {
       var personal = ['Lucía', 'Paula', 'María', 'Isabella', 'Jimena', 'Sara', 'Laura'];
       convo.say('Hola! ¿Cómo estás?');
       convo.say('Mi nombre es ' + personal[getRandomInt(0, 6)]);
-      convo.say({
-        text: '¿Puedo ayudarte a localizar algún artículo o herramienta de nuestro amplio catálogo?',
-        quick_replies: [
-          {
-            title: 'Sí',
-            payload: 'catalogo',
-          },
-          {
-            title: 'No',
-            payload: 'contacto',
-          }
-        ]
-      });
+      convo.say('¿Puedo ayudarte a localizar algún artículo o herramienta de nuestro amplio catálogo?');
     });
   }
-
-
 }
