@@ -51,14 +51,14 @@
     ],
     "triggers": [
       {
+        "pattern": ".*buen(a?s?)(os)? (d[iíÍ]as?|tardes?|noches?).*",
+        "type": "string",
+        "id": 269
+      },
+      {
         "pattern": ".*hola.*",
         "type": "regexp",
         "id": 196
-      },
-      {
-        "pattern": ".*bueno?s? dias?.*",
-        "type": "regexp",
-        "id": 434
       }
     ],
     "variables": [
