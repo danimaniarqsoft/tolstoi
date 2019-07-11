@@ -1,6 +1,6 @@
 [
   {
-    "id": "script-ferretera-id",
+    "id": "script-ateb-id",
     "command": "hola",
     "description": "Script de Bienvenida",
     "script": [
@@ -27,8 +27,8 @@
             ],
             "quick_replies": [
               {
-                "title": "Ver Catálogo",
-                "payload": "catalogo",
+                "title": "Ver Productos y Servicios",
+                "payload": "productos",
                 "content_type": "text"
               }
             ]
@@ -95,7 +95,7 @@
           },
           {
             "text": [
-              "[Casa Cravioto](https://casacraviotoeshop.com/contacto/)"
+              "[Contacto ATEB](http://www.ateb.mx/contacto/)"
             ]
           },
           {
@@ -287,55 +287,30 @@
     ]
   },
   {
-    "command": "catalogo",
-    "description": "catalogo de productos",
+    "command": "servicios",
+    "description": "servicios",
     "script": [
       {
         "topic": "default",
         "script": [
           {
             "text": [
-              "Con mucho gusto te muestro nuestro catálogo"
-            ]
-          },
-          {
-            "text": [
-              "Por favor, indícame en que sección te puedo ayudar"
+              "Contamos con los siguientes Productos y Servicios"
             ],
             "quick_replies": [
               {
-                "title": "Ferreteria",
-                "payload": "ferreteria",
+                "title": "PRODUCTOS CFDI",
+                "payload": "cfdi",
                 "content_type": "text"
               },
               {
-                "title": "Herramientas",
-                "payload": "herramientas",
+                "title": "PRODUCTOS DE COMUNICACIÓN EDI",
+                "payload": "edi",
                 "content_type": "text"
               },
               {
-                "title": "Eléctrico",
-                "payload": "electrico",
-                "content_type": "text"
-              },
-              {
-                "title": "Plomería",
-                "payload": "plomeria",
-                "content_type": "text"
-              },
-              {
-                "title": "Jardinería",
-                "payload": "jardineria",
-                "content_type": "text"
-              },
-              {
-                "title": "Cocina",
-                "payload": "cocina",
-                "content_type": "text"
-              },
-              {
-                "title": "Electrónica",
-                "payload": "electronica",
+                "title": "PÓLIZAS DE SOPORTE ATEB",
+                "payload": "polizas",
                 "content_type": "text"
               }
             ]
@@ -350,7 +325,7 @@
         "script": [
           {
             "text": [
-              "Sí gustas, te puedes poner en contacto con alguno de nuestros agentes, quienes estarán gustosos de atenderte."
+              "Looks like you got distracted. We can continue later."
             ]
           },
           {
@@ -361,22 +336,17 @@
     ],
     "triggers": [
       {
-        "pattern": ".*cat[aáÁ]logo.*",
-        "type": "regexp",
-        "id": 12
+        "pattern": ".*productos?.*",
+        "type": "string",
+        "id": 383
       },
       {
-        "pattern": "catalogo",
-        "type": "string",
-        "id": 232
+        "pattern": ".*servicios?.*",
+        "type": "regexp",
+        "id": 398
       }
     ],
     "variables": [
-      {
-        "name": "consulta_catalogo",
-        "type": "string",
-        "id": 304
-      },
       {
         "name": "question_1",
         "type": "string"
@@ -392,25 +362,45 @@
     ]
   },
   {
-    "command": "ferreteria",
-    "description": "Catálogo de ferretería",
+    "command": "sucursales",
+    "description": "sucursales",
     "script": [
       {
         "topic": "default",
         "script": [
           {
             "text": [
-              "Tenemos varios productos de Ferretería que estoy seguro que te serán de mucha utilidad"
+              "Tenemos varias sucursales"
             ]
           },
           {
             "text": [
-              "Aquí puedes consultar nuestro catálogo"
+              "que están divididas en: autoservicios, centros de distribución y nuestro corporativo"
             ]
           },
           {
             "text": [
-              "[Productos de Ferretería](https://casacraviotoeshop.com/ferreteria.html)"
+              "CDMX Tel: 51180300"
+            ]
+          },
+          {
+            "text": [
+              "PUEBLA, PUEBLA Tel: 01 222 603 6976 /  01 222 603 6977"
+            ]
+          },
+          {
+            "text": [
+              "GUADALAJARA, JALISCO Tel: 01 33 1581 2665 / 01 33 1454 6307"
+            ]
+          },
+          {
+            "text": [
+              "MONTERREY, NUEVO LEÓN Tel: 01 81 8370-7569"
+            ]
+          },
+          {
+            "text": [
+              "GUATEMALA Tel: 502 23 75 25 00"
             ]
           },
           {
@@ -434,425 +424,17 @@
     ],
     "triggers": [
       {
-        "pattern": ".*ferreter[iíÍ]a.*",
+        "pattern": ".*ubicaci[oóÓ]n(es)?.*",
         "type": "regexp",
-        "id": 98
-      }
-    ],
-    "variables": [
-      {
-        "name": "producto_seleccionado",
-        "type": "string",
-        "id": 111
+        "id": 177
       },
       {
-        "name": "question_1",
-        "type": "string"
-      },
-      {
-        "name": "question_2",
-        "type": "string"
-      },
-      {
-        "name": "question_3",
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "command": "herramientas",
-    "description": "Catálogo de ferretería",
-    "script": [
-      {
-        "topic": "default",
-        "script": [
-          {
-            "text": [
-              "Tenemos varias Herramientas que estoy seguro que te serán de mucha utilidad"
-            ]
-          },
-          {
-            "text": [
-              "Aquí puedes consultar nuestro catálogo"
-            ]
-          },
-          {
-            "text": [
-              "[Herramientas](https://casacraviotoeshop.com/herramientas.html)"
-            ]
-          },
-          {
-            "action": "complete"
-          }
-        ]
-      },
-      {
-        "topic": "on_timeout",
-        "script": [
-          {
-            "text": [
-              "Looks like you got distracted. We can continue later."
-            ]
-          },
-          {
-            "action": "timeout"
-          }
-        ]
-      }
-    ],
-    "triggers": [
-      {
-        "pattern": ".*herramientas.*",
-        "type": "string",
-        "id": 287
-      }
-    ],
-    "variables": [
-      {
-        "name": "producto_seleccionado",
-        "type": "string",
-        "id": 111
-      },
-      {
-        "name": "question_1",
-        "type": "string"
-      },
-      {
-        "name": "question_2",
-        "type": "string"
-      },
-      {
-        "name": "question_3",
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "command": "electrico",
-    "description": "Catálogo de Electricidad",
-    "script": [
-      {
-        "topic": "default",
-        "script": [
-          {
-            "text": [
-              "Tenemos varios productos Eléctricos que estoy seguro que te serán de mucha utilidad"
-            ]
-          },
-          {
-            "text": [
-              "Aquí puedes consultar nuestro catálogo"
-            ]
-          },
-          {
-            "text": [
-              "[Productos Eléctricos](https://casacraviotoeshop.com/electrico.html)"
-            ]
-          },
-          {
-            "action": "complete"
-          }
-        ]
-      },
-      {
-        "topic": "on_timeout",
-        "script": [
-          {
-            "text": [
-              "Looks like you got distracted. We can continue later."
-            ]
-          },
-          {
-            "action": "timeout"
-          }
-        ]
-      }
-    ],
-    "triggers": [
-      {
-        "pattern": ".*el[eéÉ]ctrico.*",
+        "pattern": ".*sucursa(les)?.*",
         "type": "regexp",
-        "id": 274
+        "id": 38
       }
     ],
     "variables": [
-      {
-        "name": "producto_seleccionado",
-        "type": "string",
-        "id": 111
-      },
-      {
-        "name": "question_1",
-        "type": "string"
-      },
-      {
-        "name": "question_2",
-        "type": "string"
-      },
-      {
-        "name": "question_3",
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "command": "plomeria",
-    "description": "Catálogo de Plomería",
-    "script": [
-      {
-        "topic": "default",
-        "script": [
-          {
-            "text": [
-              "Tenemos varios productos de Plomería que estoy seguro que te serán de mucha utilidad"
-            ]
-          },
-          {
-            "text": [
-              "Aquí puedes consultar nuestro catálogo"
-            ]
-          },
-          {
-            "text": [
-              "[Productos de Plomería](https://casacraviotoeshop.com/plomeria.html)"
-            ]
-          },
-          {
-            "action": "complete"
-          }
-        ]
-      },
-      {
-        "topic": "on_timeout",
-        "script": [
-          {
-            "text": [
-              "Looks like you got distracted. We can continue later."
-            ]
-          },
-          {
-            "action": "timeout"
-          }
-        ]
-      }
-    ],
-    "triggers": [
-      {
-        "pattern": ".*plomer[iíÍ]a.*",
-        "type": "regexp",
-        "id": 308
-      }
-    ],
-    "variables": [
-      {
-        "name": "producto_seleccionado",
-        "type": "string",
-        "id": 111
-      },
-      {
-        "name": "question_1",
-        "type": "string"
-      },
-      {
-        "name": "question_2",
-        "type": "string"
-      },
-      {
-        "name": "question_3",
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "command": "jardineria",
-    "description": "Catálogo de jardineía",
-    "script": [
-      {
-        "topic": "default",
-        "script": [
-          {
-            "text": [
-              "Tenemos varios productos de Jardinería que estoy seguro que te serán de mucha utilidad"
-            ]
-          },
-          {
-            "text": [
-              "Aquí puedes consultar nuestro catálogo"
-            ]
-          },
-          {
-            "text": [
-              "[Productos de Jardinería](https://casacraviotoeshop.com/jardineria.html)"
-            ]
-          },
-          {
-            "action": "complete"
-          }
-        ]
-      },
-      {
-        "topic": "on_timeout",
-        "script": [
-          {
-            "text": [
-              "Looks like you got distracted. We can continue later."
-            ]
-          },
-          {
-            "action": "timeout"
-          }
-        ]
-      }
-    ],
-    "triggers": [
-      {
-        "pattern": ".*jardiner[iíÍ]a.*",
-        "type": "regexp",
-        "id": 41
-      }
-    ],
-    "variables": [
-      {
-        "name": "producto_seleccionado",
-        "type": "string",
-        "id": 111
-      },
-      {
-        "name": "question_1",
-        "type": "string"
-      },
-      {
-        "name": "question_2",
-        "type": "string"
-      },
-      {
-        "name": "question_3",
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "command": "cocina",
-    "description": "Catálogo de Cocina",
-    "script": [
-      {
-        "topic": "default",
-        "script": [
-          {
-            "text": [
-              "Tenemos varios productos de Cocina que estoy seguro que te serán de mucha utilidad"
-            ]
-          },
-          {
-            "text": [
-              "Aquí puedes consultar nuestro catálogo"
-            ]
-          },
-          {
-            "text": [
-              "[Productos de Cocina](https://casacraviotoeshop.com/cocina.html)"
-            ]
-          },
-          {
-            "action": "complete"
-          }
-        ]
-      },
-      {
-        "topic": "on_timeout",
-        "script": [
-          {
-            "text": [
-              "Looks like you got distracted. We can continue later."
-            ]
-          },
-          {
-            "action": "timeout"
-          }
-        ]
-      }
-    ],
-    "triggers": [
-      {
-        "pattern": ".*cocina.*",
-        "type": "regexp",
-        "id": 361
-      }
-    ],
-    "variables": [
-      {
-        "name": "producto_seleccionado",
-        "type": "string",
-        "id": 111
-      },
-      {
-        "name": "question_1",
-        "type": "string"
-      },
-      {
-        "name": "question_2",
-        "type": "string"
-      },
-      {
-        "name": "question_3",
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "command": "electronica",
-    "description": "Catálogo de Electrónica",
-    "script": [
-      {
-        "topic": "default",
-        "script": [
-          {
-            "text": [
-              "Tenemos varios productos de Electrónica que estoy seguro que te serán de mucha utilidad"
-            ]
-          },
-          {
-            "text": [
-              "Aquí puedes consultar nuestro catálogo"
-            ]
-          },
-          {
-            "text": [
-              "[Productos de Electrónica](https://casacraviotoeshop.com/electronica.html)"
-            ]
-          },
-          {
-            "action": "complete"
-          }
-        ]
-      },
-      {
-        "topic": "on_timeout",
-        "script": [
-          {
-            "text": [
-              "Looks like you got distracted. We can continue later."
-            ]
-          },
-          {
-            "action": "timeout"
-          }
-        ]
-      }
-    ],
-    "triggers": [
-      {
-        "pattern": ".*electr[oóÓ]nica.*",
-        "type": "regexp",
-        "id": 313
-      }
-    ],
-    "variables": [
-      {
-        "name": "producto_seleccionado",
-        "type": "string",
-        "id": 111
-      },
       {
         "name": "question_1",
         "type": "string"
@@ -921,30 +503,20 @@
     ]
   },
   {
-    "command": "servicios",
-    "description": "servicios",
+    "command": "cfdi",
+    "description": "Productos CFDI",
     "script": [
       {
         "topic": "default",
         "script": [
           {
             "text": [
-              "Somos una empresa mexicana, con una extensa variedad de productos de ferretería,"
+              "Todas nuestras soluciones de CFDI cumplen con las versiones y complementos requeridos por la autoridad."
             ]
           },
           {
             "text": [
-              "También contamos con muchos reconocimientos y certificaciones internacionales"
-            ]
-          },
-          {
-            "text": [
-              "Si gustas, puedes consultar nuestros reconocimientos en el siguiente vínculo"
-            ]
-          },
-          {
-            "text": [
-              "[Reconocimientos](https://casacraviotoeshop.com/reconocimientos/)"
+              "[Soluciones CFDI](http://www.ateb.mx/soluciones-cfdi/)"
             ]
           },
           {
@@ -968,16 +540,17 @@
     ],
     "triggers": [
       {
-        "pattern": ".*servicios?.*",
-        "type": "regexp",
-        "id": 398
-      },
-      {
+        "pattern": ".*cfdi.*",
         "type": "string",
-        "pattern": "servicios"
+        "id": 230
       }
     ],
     "variables": [
+      {
+        "name": "producto_seleccionado",
+        "type": "string",
+        "id": 111
+      },
       {
         "name": "question_1",
         "type": "string"
@@ -993,25 +566,20 @@
     ]
   },
   {
-    "command": "sucursales",
-    "description": "sucursales",
+    "command": "edi",
+    "description": "Productos edi",
     "script": [
       {
         "topic": "default",
         "script": [
           {
             "text": [
-              "Tenemos varias sucursales"
+              "Todas nuestras soluciones de CFDI cumplen con las versiones y complementos requeridos por la autoridad."
             ]
           },
           {
             "text": [
-              "que están divididas en: autoservicios, centros de distribución y nuestro corporativo"
-            ]
-          },
-          {
-            "text": [
-              "te dejo un vínculo para que puedas consultar nuestras sucursales [Sucursales](https://casacraviotoeshop.com/sucursales/)"
+              "[ATEB Edi](http://www.ateb.mx/ateb-edi/)\n\n[ASN Admin](http://www.ateb.mx/asn-admin/)\n\n[IDN comm](http://www.ateb.mx/idn-comm/)\n\n[Traductor EDI](http://www.ateb.mx/traductor/)"
             ]
           },
           {
@@ -1035,17 +603,80 @@
     ],
     "triggers": [
       {
-        "pattern": ".*ubicaci[oóÓ]n(es)?.*",
-        "type": "regexp",
-        "id": 177
-      },
-      {
-        "pattern": ".*sucursa(les)?.*",
-        "type": "regexp",
-        "id": 38
+        "pattern": ".*edi.*",
+        "type": "string",
+        "id": 230
       }
     ],
     "variables": [
+      {
+        "name": "producto_seleccionado",
+        "type": "string",
+        "id": 111
+      },
+      {
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "command": "poliza",
+    "description": "Productos CFDI",
+    "script": [
+      {
+        "topic": "default",
+        "script": [
+          {
+            "text": [
+              "Estamos contigo. Las diferentes pólizas de soporte te acercan a nosotros. Ten la seguridad de que te apoyaremos en los distintos requerimientos que tengas."
+            ]
+          },
+          {
+            "text": [
+              "[Pólizas de Soporte ATEB](http://www.ateb.mx/wp-content/uploads/2018/06/Infograf%C3%ADa-p%C3%B3lizas.pdf)"
+            ]
+          },
+          {
+            "action": "complete"
+          }
+        ]
+      },
+      {
+        "topic": "on_timeout",
+        "script": [
+          {
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ]
+          },
+          {
+            "action": "timeout"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "pattern": ".*p[oó]liza.*",
+        "type": "string",
+        "id": 73
+      }
+    ],
+    "variables": [
+      {
+        "name": "producto_seleccionado",
+        "type": "string",
+        "id": 111
+      },
       {
         "name": "question_1",
         "type": "string"
@@ -1075,7 +706,7 @@
           {
             "action": "execute_script",
             "execute": {
-              "script": "catalogo",
+              "script": "servicios",
               "thread": "default"
             }
           }
