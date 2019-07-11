@@ -15,8 +15,9 @@ module.exports = function (controller) {
     bot.startConversation(message, function (err, convo) {
       var personal = ['Lucía', 'Paula', 'María', 'Isabella', 'Jimena', 'Sara', 'Laura'];
       convo.say('Hola! ¿Cómo estás?');
+      convo.say('Bienvenido a ATEB!');
       convo.say('Mi nombre es ' + personal[getRandomInt(0, 6)]);
-      convo.say('¿Puedo ayudarte a localizar algún artículo o herramienta de nuestro amplio catálogo?');
+      convo.say('¿Puedo ayudarte a localizar algún producto o servicio?');
     });
   }
 }
