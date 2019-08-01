@@ -12,12 +12,28 @@ module.exports = function (controller) {
 
   function firstTime(bot, message) {
 
-    bot.startConversation(message, function (err, convo) {
-      var personal = ['Lucía', 'Paula', 'María', 'Isabella', 'Jimena', 'Sara', 'Laura'];
-      convo.say('Hola! ¿Cómo estás?');
-      convo.say('Bienvenido a ATEB!');
-      convo.say('Mi nombre es ' + personal[getRandomInt(0, 6)]);
-      convo.say('¿Puedo ayudarte a localizar algún producto o servicio?');
-    });
+    var personal = ['Lucía', 'Paula', 'María', 'Isabella', 'Jimena', 'Sara', 'Laura'];
+    bot.say({
+        text: 'Hola! ¿Cómo estás?'
+      }
+    );
+    bot.say({
+      text: 'Bienvenido a CASA CRAVIOTO'
+    }
+    );
+  bot.say({
+    text: 'Mi nombre es ' + personal[getRandomInt(0, 6)]
+  }
+  );
+    bot.reply(message, {
+      text: '¿Te gustaría ver información sobre nosotros?!',
+      quick_replies: [
+          {
+              title: 'Información',
+              payload: 'información'
+          },
+      ]
+    },function() {});
+
   }
 }
