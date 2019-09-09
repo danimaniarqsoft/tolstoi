@@ -18,7 +18,7 @@ module.exports = function (controller) {
       }
     );
     bot.say({
-      text: 'Bienvenido a CASA CRAVIOTO'
+      text: 'Bienvenido a ATEB'
     }
     );
   bot.say({
@@ -41,7 +41,7 @@ module.exports = function (controller) {
 
     var personal = ['Lucía', 'Paula', 'María', 'Isabella', 'Jimena', 'Sara', 'Laura'];
     bot.say({
-      text: 'Bienvenido nuevamente a CASA CRAVIOTO'
+      text: 'Bienvenido nuevamente a ATEB'
     }
     );
   bot.say({
