@@ -9,7 +9,7 @@ module.exports = function (controller) {
     });
     convo.say("Con mucho gusto");
     convo.say("para ponerte en contacto directo con nosotros, por favor, llena la siguiente forma web:");
-    convo.say("[Contacto Casa Cravioto](https://casacraviotoeshop.com/contacto/)");
+    convo.say("[Contacto Ateb](http://www.ateb.mx/)");
     convo.say("o si lo prefieres, puedo enviarte información a tu correo electrónico.");
     convo.ask('Por favor, índicame en que correo electrónico te puedo contactar', function(response, convo) {
 			convo.setVar('correo',response.text);
